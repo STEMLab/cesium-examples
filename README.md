@@ -69,6 +69,8 @@ var mf1 = {
   }
 var mf_arr = [ mf1, mf2 ]; //mf is movingfeature object.
 var czml = movePolygonArray(mf_arr);
+var load_czml = Cesium.CzmlDataSource.load(czml)
+viewer.dataSources.add(load_czml);
 ```
 
 * movePointArray([mf_arr], with_height)

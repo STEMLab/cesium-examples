@@ -442,7 +442,10 @@ function drawTrinaglesWithNextPos(line_1, line_2, height1, height2, with_height)
 
 function drawOneCube(positions, rating = 1.0){
   var red_rate = 1.0, green_rate = (-2 * rating) + 2;
-
+  var blue_rate = 0.0;
+  if (rating < 0.5){
+    blue_rate = (0.5 - rating) * 2 ;
+  }
   var rating_color = new Cesium.Color(
     1.0,
     green_rate,
@@ -450,14 +453,6 @@ function drawOneCube(positions, rating = 1.0){
     rating
   );
 
-  if (rating < 0){
-    rating_color = new Cesium.Color(
-      1.0,
-      green_rate,
-      0.5,
-      0.2
-    );
-  }
   var size = calcSidesBoxCoord(positions);
 
   var geometry = Cesium.BoxGeometry.fromDimensions({
